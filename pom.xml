@@ -7,4 +7,12 @@
 	<artifactId>projectwork</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<modules>
+		<module>project-work-model</module>
+		<module>poject-work-eis</module>
+		<module>project-work-eis-interface</module>
+		<module>project-work-service</module>
+		<module>project-model-service-interface</module>
+		<module>project-work-service-interface</module>
+	</modules>
 </project>
