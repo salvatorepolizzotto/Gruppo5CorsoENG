@@ -117,5 +117,6 @@
 	</build>
 	<modules>
 		<module>gruppo5CorsoENG-model</module>
+		<module>gruppo5CorsoENG-eis</module>
 	</modules>
 </project>
