@@ -7,12 +7,115 @@
 	<artifactId>projectwork</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<compiler-plugin.version>3.2</compiler-plugin.version>		
+		<version.jboss.maven.plugin>7.4.Final</version.jboss.maven.plugin>
+		<version.jboss.as>7.5.0.Final-redhat-21</version.jboss.as>
+		<version.jboss.spec.javaee.6.0>3.0.2.Final-redhat-15</version.jboss.spec.javaee.6.0>
+		<version.exec.plugin>1.2.1</version.exec.plugin>
+		<maven.ear.plugin>2.10.1</maven.ear.plugin>
+		<version.hibernate>5.2.12.Final</version.hibernate>
+		<version.hibernate.jpa>1.0.0.Final</version.hibernate.jpa>
+		<version.junit>4.12</version.junit>
+		<verstion.h2>1.4.192</verstion.h2>
+		<versione.jee>6.0</versione.jee>
+	</properties>
+	<dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-6.0</artifactId>
+                <version>${version.jboss.spec.javaee.6.0}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            
+                <dependency>
+			        <groupId>org.hibernate.javax.persistence</groupId>
+			        <artifactId>hibernate-jpa-2.1-api</artifactId>
+			        <version>${version.hibernate.jpa}</version>
+			    </dependency>   
+			    
+			    <dependency>
+			        <groupId>org.hibernate</groupId>
+			        <artifactId>hibernate-entitymanager</artifactId>
+			        <version>${version.hibernate}</version>
+			    </dependency>
+			    
+
+				<dependency>
+					<groupId>javax</groupId>
+					<artifactId>javaee-api</artifactId>
+					<version>${versione.jee}</version>
+				</dependency>
+			    
+            	<dependency>
+		            <groupId>junit</groupId>
+		            <artifactId>junit</artifactId>
+		            <version>${version.junit}</version>
+		        </dependency>
+		        <dependency>
+		            <groupId>com.h2database</groupId>
+		            <artifactId>h2</artifactId>
+		            <version>${verstion.h2}</version>
+		        </dependency>
+        </dependencies>
+    </dependencyManagement>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>			
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>${version.jboss.maven.plugin}</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>${version.exec.plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>${maven.ear.plugin}</version>
+			</plugin>	
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<modules>
-		<module>project-work-model</module>
-		<module>poject-work-eis</module>
-		<module>project-work-eis-interface</module>
-		<module>project-work-service</module>
-		<module>project-model-service-interface</module>
-		<module>project-work-service-interface</module>
+		<module>gruppo5CorsoENG-model</module>
 	</modules>
 </project>
