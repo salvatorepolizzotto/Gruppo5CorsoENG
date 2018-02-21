@@ -49,11 +49,11 @@ public class User{
 		this.email = email;
 	}
 
-	/*@Override
+	@Override
 	public String toString() {
 		return "User [username=" + username + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + "]";
 	}
-	*/
+	
 	
 	
 	
