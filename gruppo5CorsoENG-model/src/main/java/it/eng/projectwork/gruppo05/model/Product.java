@@ -11,6 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Id;
 import java.awt.*;
 import java.util.Collection.*;
+import javax.persistence.OneToMany;
 
 @Entity
 @Table(name="PRODUCT")

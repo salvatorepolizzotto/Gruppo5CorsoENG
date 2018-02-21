@@ -1,13 +1,27 @@
 package it.eng.projectwork.gruppo05.model;
 
 import javax.persistence.Entity;
+import java.io.Serializable;
 import javax.persistence.Id;
 import javax.persistence.Column;
+import javax.persistence.Table;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Transient;
 
 @Entity
-public class User{
+@Table(name="USER")
+@Inheritance(strategy=InheritanceType.JOINED)
+public class User implements Serializable{
 	
+	/**
+	 * 
+	 */
+	@Transient
+	private static final long serialVersionUID = 1L;
+
 	@Id
+	@Column(length=20)
 	private String username;
 	
 	@Column (name="NOME_U", nullable=false, length=80)// abbiamo la sintassi di column
@@ -16,6 +30,24 @@ public class User{
 	private String cognome;
 	
 	private String email;
+	
+	//Costruttori
+	
+	public User() {}
+	
+	public User(String usern, String em) {
+		this.username = usern;
+		this.email = em;
+	}
+	
+	public User(String usern, String name, String surname, String em) {
+		this.username = usern;
+		this.nome = name;
+		this.cognome = surname;
+		this.email = em;
+	}
+	
+	//Getters e Setters
 
 	public String getUsername() {
 		return username;
@@ -53,9 +85,4 @@ public class User{
 	public String toString() {
 		return "User [username=" + username + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + "]";
 	}
-	
-	
-	
-	
-	
 }
