@@ -172,15 +172,17 @@ public class Auction implements Serializable {
 		return STATE.eval(this);
 	}
 	
-	public void AddBid(Bid newBid) {
+	public void AddBid(Bid newBid) throws AddBidNotValidException{
 		if(getState().canAddBid()) {
 			if(getPricing().canAddBid(getPricing().getBestOffer(this), newBid)) {
 				newBid.setAuction(this);  //setta questa asta come campo Auction nella nuova Bid
 				getAuctionBids().add(newBid);
 				lastBidDate = newBid.getBidDate();		
 			}else {
-				
+				throw new AddBidNotValidException("Mi dispiace! Offerta migliore ricevuta.");
 			}
+		}else {
+			throw new AddBidNotValidException("Ops... Lo stato dell'asta non permette nuove offerte.");
 		}
 	}
 	
