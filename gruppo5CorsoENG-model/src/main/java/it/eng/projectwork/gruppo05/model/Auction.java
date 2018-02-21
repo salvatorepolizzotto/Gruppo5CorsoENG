@@ -5,18 +5,18 @@ import java.io.Serializable;
 import javax.persistence.Table;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Id;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collections;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Version;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.Date;
@@ -33,7 +33,7 @@ public class Auction implements Serializable {
 	private long id;
 	
 	
-	@Column(name="TITLE")
+	@Column(name="TITLE", nullable = false)
 	private String title;
 	
 	@Column(name="SUPPLIER")
@@ -56,12 +56,16 @@ public class Auction implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastBidDate;
 	
+	//Lista di offerte 
 	@Column(name="AUCT_BID")
 	@OneToMany(mappedBy="auction", cascade = CascadeType.ALL)
 	private List<Bid> auctionBids= new ArrayList<Bid>();
 	
 	@Column(name="SUSPENDED")
 	private boolean suspended;
+	
+	@Enumerated(EnumType.STRING)
+	private PRICING pricing;
 	
 	//VERSION
 	
@@ -145,8 +149,40 @@ public class Auction implements Serializable {
 	public void setVersion(long version) {
 		this.version = version;
 	}
+	
+	public PRICING getPricing() {
+		return pricing;
+	}
 
 	//METODI
+	
+	//Per settare il periodo di attività dell'asta
+	public void setRangeAuction(Date startDate,Date endDate) {
+		if(startDate!=null && endDate!=null && startDate.getTime() < endDate.getTime() &&  startDate.getTime() > System.currentTimeMillis() && endDate.getTime() > System.currentTimeMillis()){
+			this.auctionBeginning = startDate;
+			this.auctionEnding = endDate;
+		}else{
+			throw new AuctionRangeDateNotValidException("start date and enda date must be future");
+		}
+	}
+	
+	@Transient
+	//Ritorna lo STATE dell'asta
+	public STATE getState() {
+		return STATE.eval(this);
+	}
+	
+	public void AddBid(Bid newBid) {
+		if(getState().canAddBid()) {
+			if(getPricing().canAddBid(getPricing().getBestOffer(this), newBid)) {
+				newBid.setAuction(this);  //setta questa asta come campo Auction nella nuova Bid
+				getAuctionBids().add(newBid);
+				lastBidDate = newBid.getBidDate();		
+			}else {
+				
+			}
+		}
+	}
 	
 	public boolean isSuspended() {
 		return suspended;
