@@ -60,12 +60,19 @@ public class Auction implements Serializable {
 	@OneToMany(mappedBy="auction", cascade = CascadeType.ALL)
 	private List<Bid> auctionBids= new ArrayList<Bid>();
 	
+	@Column(name="SUSPENDED")
+	private boolean suspended;
+	
 	//VERSION
 	
 	@Version
 	private long version;
 	
 	//GETTERS AND SETTERS
+	
+	public void setSuspended(boolean susp) {
+		this.suspended = susp;
+	}
 
 	public long getId() {
 		return id;
@@ -103,6 +110,14 @@ public class Auction implements Serializable {
 		return auctionBeginning;
 	}
 
+	public List<Bid> getAuctionBids() {
+		return auctionBids;
+	}
+
+	public void setAuctionBids(List<Bid> auctionBids) {
+		this.auctionBids = auctionBids;
+	}
+
 	public void setAuctionBeginning(Date auctionBeginning) {
 		this.auctionBeginning = auctionBeginning;
 	}
@@ -133,4 +148,14 @@ public class Auction implements Serializable {
 
 	//METODI
 	
+	public boolean isSuspended() {
+		return suspended;
+	}
+	
+	@Override
+	public String toString() {
+		return "Auction [id=" + id + ", title=" + title + ", supplier=" + supplier + ", product=" + product
+				+ ", auctionBeginning=" + auctionBeginning + ", auctionEnding=" + auctionEnding + ", lastBidDate="
+				+ lastBidDate + ", auctionBids=" + auctionBids + ", version=" + version + "]";
+	}
 }
