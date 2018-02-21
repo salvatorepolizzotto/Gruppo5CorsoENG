@@ -2,6 +2,7 @@ package it.eng.projectwork.gruppo05.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Column;
 
 @Entity
 public class User{
@@ -9,6 +10,7 @@ public class User{
 	@Id
 	private String username;
 	
+	@Column (name="NOME_U", nullable=false, length=80)// abbiamo la sintassi di column
 	private String nome;
 	
 	private String cognome;
@@ -47,10 +49,11 @@ public class User{
 		this.email = email;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "User [username=" + username + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + "]";
 	}
+	*/
 	
 	
 	
