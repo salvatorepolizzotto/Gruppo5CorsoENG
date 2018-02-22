@@ -116,10 +116,11 @@
 		</plugins>
 	</build>
 	<modules>
-		<module>gruppo5CorsoENG-model</module>
-		<module>gruppo5CorsoENG-eis</module>
-		<module>gruppo5CorsoENG-service</module>
+		<module>Gruppo5CorsoENG-model</module>
+		<module>Gruppo5CorsoENG-eis</module>
+		<module>Gruppo5CorsoENG-service</module>
 		<module>Gruppo5CorsoENG-eis-interface</module>
 		<module>Gruppo5CorsoENG-service-interface</module>
+		<module>Gruppo5CorsoEAR-ear</module>
 	</modules>
 </project>

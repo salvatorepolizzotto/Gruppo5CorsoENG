@@ -5,7 +5,7 @@
     <artifactId>projectwork</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>gruppo5CorsoENG-eis</artifactId>
+  <artifactId>Gruppo5CorsoENG-eis</artifactId>
   <dependencies>
   	<dependency>		
   		<groupId>javax</groupId>
@@ -16,7 +16,7 @@
     </dependency>
  	<dependency>
   		<groupId>it.eng.projectwork.gruppo5</groupId>
-  		<artifactId>gruppo5CorsoENG-model</artifactId>
+  		<artifactId>Gruppo5CorsoENG-model</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
@@ -43,4 +43,5 @@
    </plugins>
   </build>
   
+  <packaging>ejb</packaging>
 </project>

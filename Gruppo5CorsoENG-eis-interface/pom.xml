@@ -15,7 +15,7 @@
 	</dependency>
   	<dependency>
   		<groupId>it.eng.projectwork.gruppo5</groupId>
-  		<artifactId>gruppo5CorsoENG-model</artifactId>
+  		<artifactId>Gruppo5CorsoENG-model</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>

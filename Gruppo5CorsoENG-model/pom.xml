@@ -5,7 +5,7 @@
     <artifactId>projectwork</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>gruppo5CorsoENG-model</artifactId>
+  <artifactId>Gruppo5CorsoENG-model</artifactId>
   <dependencies>
   	    <dependency>
             <groupId>org.hibernate</groupId>
