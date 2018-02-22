@@ -72,6 +72,26 @@ public class Auction implements Serializable {
 	@Version
 	private long version;
 	
+	//Costruttori
+	
+	public Auction(String title, Product prod, Date beginDate, Date endDate) {
+		this.title = title;
+		this.product = prod;
+		this.setRangeAuction(beginDate, endDate);
+	}
+	
+	public Auction() {}
+	
+	public Auction(String title, Supplier supplier, Product product, boolean suspended, PRICING pricing, long version) {
+		this.title = title;
+		this.supplier = supplier;
+		this.product = product;
+		setRangeAuction(auctionBeginning, auctionEnding);
+		this.suspended = suspended;
+		this.pricing = pricing;
+		this.version = version;
+	}
+
 	//GETTERS AND SETTERS
 	
 	public void setSuspended(boolean susp) {
