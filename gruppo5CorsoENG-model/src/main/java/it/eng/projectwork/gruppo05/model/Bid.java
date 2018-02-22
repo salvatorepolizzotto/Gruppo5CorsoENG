@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+
 import java.awt.*;
 import java.util.Collection.*;
 import javax.persistence.CascadeType;
@@ -32,12 +34,14 @@ public class Bid {
 	private long id;
 	
 	@ManyToOne
+	@JoinColumn(name="BID_AUCT")
 	private Auction auction;
 	
 	@Column(name="PRICE")
 	private BigDecimal price;
 	
 	@ManyToOne
+	@JoinColumn(name="BID_USR")
 	private User user;
 	
 	@Column(name="BID_DATE")
@@ -95,5 +99,4 @@ public class Bid {
 	public void setBidDate(Date bidDate) {
 		this.bidDate = bidDate;
 	}
-	
 }

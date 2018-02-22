@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+
 import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.CascadeType;
@@ -37,12 +39,14 @@ public class Auction implements Serializable {
 	private String title;
 	
 	@ManyToOne
+	@JoinColumn(name="AUCT_SUPP")
 	private Supplier supplier;   //Venditore che mette l'asta.
 	
 	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="AUCT_PROD")
 	private Product product;                     //Prodotto messo all'asta
 	
-	@Column(name="AUCT_BEGIN")
+	@Column(name="AUCT_BEGIN", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date auctionBeginning;
 	

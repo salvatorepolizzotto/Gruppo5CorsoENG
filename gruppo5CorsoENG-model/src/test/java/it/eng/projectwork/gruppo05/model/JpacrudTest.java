@@ -16,10 +16,7 @@ public class JpacrudTest extends JPAHibernateTest {
 		em.getTransaction().begin();
 		
 		
-		User u = new Supplier();
-		u.setNome("Salvo");
-		u.setCognome("Cutaia");
-		u.setUsername("Salvocutaia");
+		User u = new Supplier("Salvo","Cutaia", "Salvocutaia","emailx");
 		u.setEmail("salvo.cutaia@eng.it");
 		
 		em.persist(u);
@@ -50,6 +47,7 @@ public class JpacrudTest extends JPAHibernateTest {
 	public void test2() {
 
 		Query query = em.createQuery("SELECT u FROM User u WHERE u.email=:email");
+		Query query2 = em.createQuery("select u from User u");
 		query.setParameter("email", "salvo.cutaia@eng.it");
 		//query.setParameter("emails","pluto.pippo@eng.it");
 		// query.setFirstResult(1);   indica da quale riga della tabella user iniziare (in questo caso dalla riga 1)  
@@ -58,8 +56,10 @@ public class JpacrudTest extends JPAHibernateTest {
 			System.out.println(user);
 			
 		}
-		 
-	}
-	
-	
+		List<User> users1 = query2.getResultList();
+		for(User user1 : users1) {
+			System.out.println(user1);
+			
+		}	 
+	}	
 }

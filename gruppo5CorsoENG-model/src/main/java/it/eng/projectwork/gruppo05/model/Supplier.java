@@ -16,7 +16,18 @@ public class Supplier extends User{
 
 	@Column(name="SUPP_INFO")
 	private String info;
-
+	
+	//Costruttori
+	public Supplier(String usr, String em){
+		super(usr,em);
+	}
+	
+	public Supplier() {super();}
+	
+	public Supplier(String usr, String nm, String srnm, String em) {
+		super(usr,nm,srnm,em);
+	}
+	
 	@Override
 	public String toString() {
 		return "Supplier [" + this.getUsername() + " info= " + info + "]";
