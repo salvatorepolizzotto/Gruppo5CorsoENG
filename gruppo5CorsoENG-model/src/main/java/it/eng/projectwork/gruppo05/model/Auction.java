@@ -36,11 +36,9 @@ public class Auction implements Serializable {
 	@Column(name="TITLE", nullable = false)
 	private String title;
 	
-	@Column(name="SUPPLIER")
 	@ManyToOne
 	private Supplier supplier;   //Venditore che mette l'asta.
 	
-	@Column(name="AUCT_PROD")
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Product product;                     //Prodotto messo all'asta
 	

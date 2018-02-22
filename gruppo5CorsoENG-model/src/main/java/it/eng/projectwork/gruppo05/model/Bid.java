@@ -31,14 +31,12 @@ public class Bid {
 	@SequenceGenerator(name="BID_ID", sequenceName="BID_ID", allocationSize=1)
 	private long id;
 	
-	@Column(name="BID_AUCTION")
 	@ManyToOne
 	private Auction auction;
 	
 	@Column(name="PRICE")
 	private BigDecimal price;
 	
-	@Column(name="BID_USER")
 	@ManyToOne
 	private User user;
 	
