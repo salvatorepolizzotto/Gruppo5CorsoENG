@@ -18,6 +18,17 @@ public enum PRICING{
 			return newBid.getPrice().compareTo(b.getPrice())>0;
 		}
 	
+	},RIBASSO{
+		@Override
+		public Bid getBestOffer(Auction auction) {
+			Comparator<Bid> comparator = Comparator.comparing(Bid::getPrice);
+			return auction.getAuctionBids().stream().min(comparator).get();
+		}
+		
+		@Override
+		public boolean canAddBid(Bid b, Bid newBid) {
+			return newBid.getPrice().compareTo(b.getPrice())<0;
+		}
 	};
 	
 	public abstract boolean canAddBid(Bid b, Bid newBid);
